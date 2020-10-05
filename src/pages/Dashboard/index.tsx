@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiChevronRight }  from 'react-icons/fi'
 import { Title, TitleContainer, Container, Form, Repositories } from './styles'
 
 import logoImg from '../../assets/logo.svg'
@@ -22,6 +23,15 @@ const Dashboard: React.FC = () => {
                         <strong>template-nodejs-with-solid</strong>
                         <p>Projeto desenvolvido nas aulas da Rocketseat no goStack</p>
                     </div>
+                        <FiChevronRight size={20}/>
+                </a>
+                <a href="re">
+                    <img src="https://avatars1.githubusercontent.com/u/4674324?s=460&u=cb676169391ac204b824569fd7465fa36488624d&v=4" alt="Perfil"/>
+                    <div>
+                        <strong>template-nodejs-with-solid</strong>
+                        <p>Projeto desenvolvido nas aulas da Rocketseat no goStack</p>
+                    </div>
+                        <FiChevronRight size={20}/>
                 </a>
             </Repositories>
         </Container>

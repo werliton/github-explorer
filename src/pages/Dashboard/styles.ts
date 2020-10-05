@@ -68,6 +68,15 @@ export const Repositories = styled.div`
 
         text-decoration:none;
         display: flex;
+        transition: transform 0.2s;
+
+        &:hover{
+            transform: translateX(10px);
+        }
+
+        & + a {
+            margin-top: 16px;
+        }
 
         img {
             border-radius: 50%;
@@ -83,10 +92,15 @@ export const Repositories = styled.div`
             }
 
             p {
-                font-size: 18px;
+                font-size: 16px;
                 color: #a8a8b3;
                 margin-top: 4px;
             }
+        }
+
+        svg{
+            margin-left: auto;
+            color: #cbcbd6;
         }
 
     }

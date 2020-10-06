@@ -17,7 +17,7 @@ export const Title = styled.h1`
     color: #3a3a3a;
 
     max-width: 450px;
-    line-height: 56px;
+    line-height: 40px;
     margin-top: 80px;
 
 `
@@ -95,7 +95,7 @@ export const Repositories = styled.div`
 
             p {
                 font-size: 16px;
-                color: #a8a8b3;
+                color: #ada9a8;
                 margin-top: 4px;
             }
         }

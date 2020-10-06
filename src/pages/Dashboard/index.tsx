@@ -1,38 +1,55 @@
-import React from 'react'
-import { FiChevronRight }  from 'react-icons/fi'
-import { Title, TitleContainer, Container, Form, Repositories } from './styles'
+import React, { FormEvent, useState } from 'react'
+import { Title, TitleContainer, Container, Form, Repositories, Message } from './styles'
 
 import logoImg from '../../assets/logo.svg'
+import RepositoryItem, { Repository } from './RepositoryItem'
+import api from '../../services/api'
 
 const Dashboard: React.FC = () => {
+    const [repositories, setRepositories] = useState<Repository[]>([])
+    const [inputRepository, setInputRepository] = useState('')
+
+    const submit = async (event: FormEvent<HTMLElement>) => {
+
+        event.preventDefault()
+
+        const { data: repository } = await api.get<Repository>(`repos/${inputRepository}`)
+
+        if(repository){
+            setRepositories([...repositories, repository])
+            setInputRepository('')
+        }
+    }
+
     return (
         <Container>
             <TitleContainer>
                 <img src={logoImg} alt="Github Explorer"/>
                 <Title>Explore repositórios no Github</Title>
             </TitleContainer>
-            <Form>
-                <input placeholder="Digite aqui o nome do repositorio"/>
-                <button type="submit">Pesquisar</button>
+            <Form onSubmit={submit}>
+                <input
+                placeholder="Digite aqui o nome do repositorio"
+                value={inputRepository}
+                onChange={ e => setInputRepository(e.target.value)}
+                />
+                <button
+                type="button"
+                >Pesquisar</button>
+
             </Form>
 
             <Repositories>
-                <a href="re">
-                    <img src="https://avatars1.githubusercontent.com/u/4674324?s=460&u=cb676169391ac204b824569fd7465fa36488624d&v=4" alt="Perfil"/>
-                    <div>
-                        <strong>template-nodejs-with-solid</strong>
-                        <p>Projeto desenvolvido nas aulas da Rocketseat no goStack</p>
-                    </div>
-                        <FiChevronRight size={20}/>
-                </a>
-                <a href="re">
-                    <img src="https://avatars1.githubusercontent.com/u/4674324?s=460&u=cb676169391ac204b824569fd7465fa36488624d&v=4" alt="Perfil"/>
-                    <div>
-                        <strong>template-nodejs-with-solid</strong>
-                        <p>Projeto desenvolvido nas aulas da Rocketseat no goStack</p>
-                    </div>
-                        <FiChevronRight size={20}/>
-                </a>
+                {
+                    repositories.length > 0 ?
+                    repositories.map((item, index) => (
+                        <RepositoryItem {...item} key={index}/>
+                    ))
+                    :
+                    <Message>
+                        <p>Nenhum repositório encontrado!</p>
+                    </Message>
+                }
             </Repositories>
         </Container>
     )

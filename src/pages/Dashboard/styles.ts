@@ -84,7 +84,8 @@ export const Repositories = styled.div`
         }
 
         div {
-            margin-left: 16px;
+            margin:0 16px;
+            flex:1;
 
             strong{
                 font-size: 20px;
@@ -102,8 +103,18 @@ export const Repositories = styled.div`
             margin-left: auto;
             color: #cbcbd6;
         }
-
     }
+`
+export const Message = styled.div`
+    font-size: 16px;
+    height: 50px;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius:5px;
 
-
+    p{
+        color:#3D3D4D
+    }
 `

@@ -5,6 +5,10 @@ interface FormProps {
     hasError: boolean
 }
 
+interface SearchButtonProps {
+    enabled: boolean
+}
+
 export const Container = styled.div`
     max-width:700px;
 `
@@ -47,24 +51,10 @@ export const Form = styled.form<FormProps>`
         color: #3a3a3a;
      }
 
-     button {
-         width: 210px;
-         height: 70px;
-         background: #04d361;
-         border-radius: 0px 5px 5px 0px;
-         border:0;
-         color: #fff;
-         font-weight: bold;
-         transition: background-color 0.2s;
-
-         &:hover{
-            background: ${shade(0.2, '#04d361')}
-         }
-     }
 `
 
 export const Repositories = styled.div`
-    margin-top: 80px;
+    margin-top: 50px;
     max-width: 700px;
 
     a{
@@ -82,6 +72,7 @@ export const Repositories = styled.div`
 
         &:hover{
             transform: translateX(10px);
+            box-shadow: 2px 2px 2px #a8a8b3;
         }
 
         & + a {
@@ -118,14 +109,42 @@ export const Repositories = styled.div`
 export const Message = styled.div`
     font-size: 16px;
     height: 50px;
-    background: #fff;
+    background: #c53030;
     align-items: center;
     justify-content: center;
     display: flex;
     border-radius:5px;
+    margin-top:10px;
 
     p{
-        color:#3D3D4D;
+        color:#fff;
         margin-left: 5px;
+    }
+`
+export const SearchButton = styled.button<SearchButtonProps>`
+    width: 210px;
+    height: 70px;
+    background: #04d361;
+    border-radius: 0px 5px 5px 0px;
+    border:0;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        margin-right:5px;
+    }
+
+    ${props => props.enabled && css`
+        background: #a8a8b3;
+        cursor: not-allowed;
+    `}
+
+    &:hover{
+        background: ${shade(0.2, '#04d361')}
     }
 `

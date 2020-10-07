@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Title, TitleContainer, Container, Form, Repositories, Message, SearchButton } from './styles'
-import RepositoryItem, { Repository } from './RepositoryItem'
+import Items, { Repository } from './Items'
 import { FiInfo, FiSearch } from 'react-icons/fi'
 
 import logoImg from '../../assets/logo.svg'
@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
                 {
                     repositories.length > 0 &&
                     repositories.map((item, index) => (
-                        <RepositoryItem {...item} key={index}/>
+                        <Items {...item} key={index}/>
                     ))
                 }
             </Repositories>

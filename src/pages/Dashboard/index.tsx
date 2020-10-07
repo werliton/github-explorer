@@ -1,15 +1,16 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Title, TitleContainer, Container, Form, Repositories, Message, SearchButton } from './styles'
-import Items, { Repository } from './Items'
+import Items from './Items'
 import { FiInfo, FiSearch } from 'react-icons/fi'
 
 import logoImg from '../../assets/logo.svg'
 import api from '../../services/api'
+import RepositoryDTO from '../../shared/dtos/RepositoryDTO'
 
 const REPOSITORIES_KEY = '@ge:repositories'
 
 const Dashboard: React.FC = () => {
-    const [repositories, setRepositories] = useState<Repository[]>(()=>{
+    const [repositories, setRepositories] = useState<RepositoryDTO[]>(()=>{
         const repositoriesStorage = localStorage.getItem(REPOSITORIES_KEY)
 
         if(repositoriesStorage) return JSON.parse(repositoriesStorage)
@@ -37,7 +38,7 @@ const Dashboard: React.FC = () => {
         }
 
         try {
-            const { data: repository } = await api.get<Repository>(`repos/${inputRepository}`)
+            const { data: repository } = await api.get<RepositoryDTO>(`repos/${inputRepository}`)
 
             if(repository){
                 setRepositories([...repositories, repository])

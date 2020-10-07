@@ -99,7 +99,7 @@ export const Issues = styled.div`
         }
 
         & + a {
-            margin-top: 16px;
+            margin-top: 10px;
         }
 
         div {
@@ -122,5 +122,17 @@ export const Issues = styled.div`
             margin-left: auto;
             color: #cbcbd6;
         }
+    }
+`
+export const Loading = styled.div`
+    margin-top: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+
     }
 `

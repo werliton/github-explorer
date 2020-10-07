@@ -1,18 +1,9 @@
 import React from 'react'
 import { FiChevronRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import RepositoryDTO from '../../shared/dtos/RepositoryDTO'
 
-interface Owner{
-    avatar_url: string
-}
-
-export interface Repository {
-    full_name: string;
-    owner: Owner;
-    description: string;
-}
-
-export default function RepositoryItem({ full_name, description, owner }: Repository) {
+export default function RepositoryItem({ full_name, description, owner }: RepositoryDTO) {
     return (
         <Link to={`/repository/${full_name}`}>
             <div>
